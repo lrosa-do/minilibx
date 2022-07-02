@@ -1,0 +1,102 @@
+# depslib dependency file v1.0
+1654623519 source:/media/djoker/code/linux/c/minilibx/main.c
+	<stdio.h>
+	<stdlib.h>
+	"mlx.h"
+
+1654623171 /media/djoker/code/linux/c/minilibx/mlx.h
+
+1654623589 source:/media/djoker/code/linux/c/minilibx/minilibx.c
+	<stdio.h>
+	<stdlib.h>
+	<SDL2/SDL.h>
+	"mlx.h"
+
+1656696857 source:/media/djoker/code/42/samples/minilibx/main.c
+	<stdio.h>
+	<stdlib.h>
+	"mlx.h"
+
+1654867930 /media/djoker/code/42/samples/minilibx/mlx.h
+
+1656696822 source:/media/djoker/code/42/samples/minilibx/minilibx.c
+	<stdio.h>
+	<stdlib.h>
+	<SDL2/SDL.h>
+	<strings.h>
+	"mlx.h"
+	"stb_image.h"
+	"mlx_rgb.c"
+
+1654710159 /media/djoker/code/42/samples/minilibx/stb_image.h
+	"stb_image.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdarg.h>
+	<stddef.h>
+	<stdlib.h>
+	<string.h>
+	<limits.h>
+	<math.h>
+	<stdio.h>
+	<assert.h>
+	<stdint.h>
+	<emmintrin.h>
+	<intrin.h>
+	<arm_neon.h>
+
+1571748124 /media/djoker/code/42/samples/minilibx/mlx_rgb.c
+
+1656703733 source:/media/djoker/data/code/c/minilibx/main.c
+	<stdio.h>
+	<stdlib.h>
+	"mlx.h"
+
+1654936271 /media/djoker/data/code/c/minilibx/mlx.h
+
+1656704082 source:/media/djoker/data/code/c/minilibx/minilibx.c
+	<stdio.h>
+	<stdlib.h>
+	<SDL2/SDL.h>
+	<strings.h>
+	"mlx.h"
+	"stb_image.h"
+	"stb_truetype.h"
+	"font_ttf.h"
+	"mlx_rgb.c"
+
+1654936271 /media/djoker/data/code/c/minilibx/stb_image.h
+	"stb_image.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdarg.h>
+	<stddef.h>
+	<stdlib.h>
+	<string.h>
+	<limits.h>
+	<math.h>
+	<stdio.h>
+	<assert.h>
+	<stdint.h>
+	<emmintrin.h>
+	<intrin.h>
+	<arm_neon.h>
+
+1654936271 /media/djoker/data/code/c/minilibx/mlx_rgb.c
+
+1639770938 /media/djoker/data/code/c/minilibx/stb_truetype.h
+	"stb_truetype.h"
+	<stdio.h>
+	"stb_truetype.h"
+	<math.h>
+	<math.h>
+	<math.h>
+	<math.h>
+	<math.h>
+	<stdlib.h>
+	<assert.h>
+	<string.h>
+	<string.h>
+
+1655049230 /media/djoker/data/code/c/minilibx/font_ttf.h
+
