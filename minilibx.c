@@ -270,10 +270,6 @@ retry:
 }
 
 
-
-
-
-
 self->image = SDL_CreateRGBSurfaceWithFormat(0,w,h,8,SDL_PIXELFORMAT_RGB332);
 //SDL_FillRect(self->image,NULL,SDL_MapRGB(self->image->format,0,0,0));
 
@@ -520,6 +516,13 @@ int	mlx_destroy_display(void *mlx_ptr)
   SDL_DestroyRenderer(core->renderer);
   core->renderer=NULL;
  return (0);
+}
+
+int mlx_loop_end (void *mlx_ptr)
+{
+  (void)mlx_ptr;
+  core->quit =1;
+
 }
 
 int	mlx_destroy_window(void *mlx_ptr, void *win_ptr)

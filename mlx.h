@@ -106,7 +106,7 @@ typedef enum
     KEY_x = 'x',
     KEY_y = 'y',
     KEY_z = 'z'
-};
+}KeyCode;
 
 
 void	*mlx_init();
