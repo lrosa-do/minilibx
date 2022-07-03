@@ -1,2 +1,2 @@
 # minilibx
-minilib on top of SDL2
+minilibx on top of SDL2
