@@ -342,7 +342,7 @@ SDL_Log(" %d %d \n",strideFnt,bytesPerPixelFnt);
 
 */
 //SDL_SetColorKey(self->image,1,0);
-SDL_SaveBMP(self->image,"font.bmp");
+//SDL_SaveBMP(self->image,"font.bmp");
 
 
 
@@ -811,7 +811,7 @@ int	mlx_loop (void *mlx_ptr)
                                 if (core->joystick)
                                 {
                                     PrintJoystick(core->joystick);
-                                } 
+                                }
                             }
                             break;
                     }
@@ -1728,7 +1728,7 @@ void	*mlx_xpm_file_to_image(void *mlx_ptr,char *file,int *width,int *height)
   SDL_Surface  *surface =SDL_CreateRGBSurfaceWithFormat(0,img->width,img->height,32 ,SDL_PIXELFORMAT_BGRA32);
   SDL_SetSurfaceBlendMode(surface,SDL_BLENDMODE_NONE);
   SDL_Rect rect=(SDL_Rect){0,0,w,h};
-  int bytesPerPixel=4;//mlx user 4 bgra 4 * 8bytes per color 
+  int bytesPerPixel=4;//mlx user 4 bgra 4 * 8bytes per color
 
     for (int y = 0; y < h; y++)
     {
@@ -1738,11 +1738,12 @@ void	*mlx_xpm_file_to_image(void *mlx_ptr,char *file,int *width,int *height)
             (int)w*bytesPerPixel);
     }
 
-  //free the pixel that was copy to surface  
+  //free the pixel that was copy to surface
    mlx_destroy_mlximage(img);
 
     if (!surface)
         return ((void *)0);
+    SDL_SetColorKey(surface,SDL_TRUE,0xFF000000);
     return (void*)surface;
   }
 
@@ -1765,7 +1766,7 @@ void	*mlx_xpm_to_image(void *mlx_ptr, char **xpm_data,int *width, int *height)
     //SDL_Surface  *surface =SDL_CreateRGBSurfaceWithFormatFrom((void*)pixels, img->width,img->height,bits_per_pixel,size_line,SDL_PIXELFORMAT_BGRA32);
 
   SDL_Surface  *surface =SDL_CreateRGBSurfaceWithFormat(0,img->width,img->height,32 ,SDL_PIXELFORMAT_BGRA32);
-  
+
 
   SDL_SetSurfaceBlendMode(surface,SDL_BLENDMODE_NONE);
   SDL_Rect rect=(SDL_Rect){0,0,w,h};
@@ -1779,6 +1780,7 @@ void	*mlx_xpm_to_image(void *mlx_ptr, char **xpm_data,int *width, int *height)
     }
 
    mlx_destroy_mlximage(img);
+    SDL_SetColorKey(surface,SDL_TRUE,0xFF000000);
     return (void*)surface;
 }
 
@@ -1796,14 +1798,14 @@ int	mlx_string_put(void *mlx_ptr, void *win_ptr, int x, int y, int color,char *s
     Uint8  g;
     Uint8  b;
 
-    
+
     r = (Uint8)(color>>16) & 0xff;
     g = (Uint8)(color>>8) & 0xff;
     b = (Uint8)(color & 0xff);
 
     SDL_SetSurfaceColorMod(core->fnt->image,r,g,b);
     font_blit(core->screen,core->fnt,(const char*)string,x,y);
- 
+
 return (1);
 }
 
