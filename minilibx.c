@@ -269,7 +269,7 @@ retry:
     }
 }
 
-
+/*
 self->image = SDL_CreateRGBSurfaceWithFormat(0,w,h,8,SDL_PIXELFORMAT_RGB332);
 //SDL_FillRect(self->image,NULL,SDL_MapRGB(self->image->format,0,0,0));
 
@@ -285,11 +285,11 @@ int bytesPerPixel=1;
           memcpy(dst,src,pitch);
     }
 
+*/
 
 
 
 
-/*
 //self->image = SDL_CreateRGBSurface(0,  w, h, 32 , 0, 0, 0, 0);
 self->image = SDL_CreateRGBSurfaceWithFormat(0,w,h,24,SDL_PIXELFORMAT_BGR24);
 SDL_SetSurfaceBlendMode(self->image,SDL_BLENDMODE_NONE);
@@ -339,8 +339,7 @@ SDL_Log(" %d %d \n",strideFnt,bytesPerPixelFnt);
             pFntBase += strideFnt;
         }
 
-
-*/
+SDL_SetColorKey(self->image,SDL_TRUE,0);
 //SDL_SetColorKey(self->image,1,0);
 //SDL_SaveBMP(self->image,"font.bmp");
 
@@ -548,6 +547,7 @@ void	*mlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title)
  //   core->window = SDL_CreateWindow(title,0,0,size_x,size_y, SDL_WINDOW_SHOWN |SDL_WINDOW_FULLSCREEN );
    core->window = SDL_CreateWindow(title,SDL_WINDOWPOS_CENTERED,           // initial x position
         SDL_WINDOWPOS_CENTERED,size_x,size_y, SDL_WINDOW_SHOWN  );
+
     if (!core->window)
         return ((void*)0);
     core->screen = SDL_GetWindowSurface( core->window );
@@ -740,9 +740,9 @@ static void PrintJoystick(SDL_Joystick *joy)
     SDL_Log("Joystick\n");
     SDL_Log("          name: %s\n", SDL_JoystickName(joy));
     SDL_Log("          type: %s\n", type);
-    SDL_Log("           LED: %s\n", SDL_JoystickHasLED(joy) ? "yes" : "no");
-   SDL_Log("        rumble: %s\n", SDL_JoystickHasRumble(joy) ? "yes" : "no");
-    SDL_Log("trigger rumble: %s\n", SDL_JoystickHasRumbleTriggers(joy) ? "yes" : "no");
+  //  SDL_Log("           LED: %s\n", SDL_JoystickHasLED(joy) ? "yes" : "no");
+  // SDL_Log("        rumble: %s\n", SDL_JoystickHasRumble(joy) ? "yes" : "no");
+  //  SDL_Log("trigger rumble: %s\n", SDL_JoystickHasRumbleTriggers(joy) ? "yes" : "no");
     SDL_Log("          axes: %d\n", SDL_JoystickNumAxes(joy));
     SDL_Log("         balls: %d\n", SDL_JoystickNumBalls(joy));
     SDL_Log("          hats: %d\n", SDL_JoystickNumHats(joy));
@@ -1076,6 +1076,7 @@ void	*mlx_new_image(void *mlx_ptr,int width,int height)
     if (!buffer)
         return ((void*)0);
     SDL_SetSurfaceBlendMode(buffer,SDL_BLENDMODE_NONE);
+    SDL_SetColorKey(buffer,SDL_TRUE,0xFF000000);
 
 
     return (void*)buffer;
@@ -1222,6 +1223,20 @@ int		mlx_mouse_get_pos(void *mlx_ptr, void *win_ptr, int *win_x_return, int *win
 int		mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey)
 {
 (void)mlx_ptr;
+
+
+SDL_DisplayMode dm;
+
+if (SDL_GetDesktopDisplayMode(0, &dm) != 0)
+{
+     SDL_Log("SDL_GetDesktopDisplayMode failed: %s", SDL_GetError());
+     return 1;
+}
+
+
+*sizex = dm.w;
+*sizey = dm.h;
+
 return (0);
 }
 
@@ -1827,5 +1842,8 @@ void mlx_joystick_rumble(int duration_ms)
       SDL_JoystickRumble(core->joystick, 0xFFFF, 0xFFFF, (Uint32)duration_ms);
 }
 
-
+void free_mlx(void *mlx_ptr)
+{
+   (void)mlx_ptr;
+}
 
